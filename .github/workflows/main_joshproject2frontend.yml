@@ -9,6 +9,8 @@ on:
     branches:
       - main
   workflow_dispatch:
+env:
+  STARTUP_COMMAND: 'app.py'
 
 jobs:
   build:
@@ -37,7 +39,7 @@ jobs:
       with:
         name: python-app
         path: |
-          .
+          NeighborlyFrontEnd/
           !venv/
 
   deploy:
