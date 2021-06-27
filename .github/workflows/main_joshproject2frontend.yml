@@ -11,6 +11,7 @@ on:
   workflow_dispatch:
 env:
   STARTUP_COMMAND: 'app.py'
+  working-directory: NeighborlyFrontEnd
 
 jobs:
   build:
@@ -39,7 +40,7 @@ jobs:
       with:
         name: python-app
         path: |
-          NeighborlyFrontEnd/
+          .
           !venv/
 
   deploy:
