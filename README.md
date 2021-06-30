@@ -46,7 +46,7 @@ We need to set up the Azure resource group, region, storage account, and an app 
 
 1. Create a resource group.
 2. Create a storage account (within the previously created resource group and region).
-3. Create an Azure Function App within the resource group, region and storage account. 
+3. Create an Azure Function App within the resource group, region and storage account.
    - Note that app names need to be unique across all of Azure.
    - Make sure it is a Linux app, with a Python runtime.
 
@@ -62,6 +62,7 @@ We need to set up the Azure resource group, region, storage account, and an app 
 6. Print out your connection string or get it from the Azure Portal. Copy/paste the **primary connection** string.  You will use it later in your application.
 
     Example connection string output:
+
     ```bash
     bash-3.2$ Listing connection strings from COSMOS_ACCOUNT:
     + az cosmosdb keys list -n neighborlycosmos -g neighborlyapp --type connection-strings
@@ -83,6 +84,7 @@ We need to set up the Azure resource group, region, storage account, and an app 
 
 7. Import Sample Data Into MongoDB.
    - Download dependencies:
+
         ```bash
         # get the mongodb library
         brew install mongodb-community@4.2
@@ -94,6 +96,7 @@ We need to set up the Azure resource group, region, storage account, and an app 
     - Import the data from the `sample_data` directory for Ads and Posts to initially fill your app.
 
         Example successful import:
+
         ```
         Importing ads data ------------------->
         2020-05-18T23:30:39.018-0400  connected to: mongodb://neighborlyapp.mongo.cosmos.azure.com:10255/
@@ -151,7 +154,7 @@ We need to set up the Azure resource group, region, storage account, and an app 
 
         You may need to change `"IsEncrypted"` to `false` in `local.settings.json` if this fails.
 
-        At this point, Azure functions are hosted in localhost:7071.  You can use the browser or Postman to see if the GET request works.  For example, go to the browser and type in: 
+        At this point, Azure functions are hosted in localhost:7071.  You can use the browser or Postman to see if the GET request works.  For example, go to the browser and type in:
 
         ```bash
         # example endpoint for all advertisements
@@ -166,6 +169,7 @@ We need to set up the Azure resource group, region, storage account, and an app 
         The result may give you a live url in this format, or you can check in Azure portal for these as well:
 
         Expected output if deployed successfully:
+
         ```bash
         Functions in <APP_NAME>:
             createAdvertisement - [httpTrigger]
@@ -193,13 +197,14 @@ We need to set up the Azure resource group, region, storage account, and an app 
 
         **Note:** It may take a minute or two for the endpoints to get up and running if you visit the URLs.
 
-        Save the function app url **https://<APP_NAME>.azurewebsites.net/api/** since you will need to update that in the client-side of the application.
+        Save the function app url **<https://<APP_NAME>.azurewebsites.net/api/>** since you will need to update that in the client-side of the application.
 
 ### II. Deploying the client-side Flask web application
 
 We are going to update the Client-side `settings.py` with published API endpoints. First navigate to the `settings.py` file in the NeighborlyFrontEnd/ directory.
 
 Use a text editor to update the API_URL to your published url from the last step.
+
 ```bash
 # Inside file settings.py
 

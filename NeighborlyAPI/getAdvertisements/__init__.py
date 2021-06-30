@@ -3,21 +3,19 @@ import pymongo
 import json
 from bson.json_util import dumps
 
+
 def main(req: func.HttpRequest) -> func.HttpResponse:
 
     try:
-        url = "localhost"  # TODO: Update with appropriate MongoDB connection information
+        url = "mongodb://project2cosmodb:ldsE8YCzgTi8GFfR84wCimXVrZCLbrLbUXfj2uwVQKRB2kgyaLC7ZArYoKl1nhSYURsamm90fOZlhRqk9BnXoA==@project2cosmodb.mongo.cosmos.azure.com:10255/?ssl=true&replicaSet=globaldb&retrywrites=false&maxIdleTimeMS=120000&appName=@project2cosmodb@"  # TODO: Update with appropriate MongoDB connection information
         client = pymongo.MongoClient(url)
-        database = client['azure']
-        collection = database['advertisements']
-
+        database = client["project2db"]
+        collection = database["advertisements"]
 
         result = collection.find({})
         result = dumps(result)
 
-        return func.HttpResponse(result, mimetype="application/json", charset='utf-8')
+        return func.HttpResponse(result, mimetype="application/json", charset="utf-8")
     except:
         print("could not connect to mongodb")
-        return func.HttpResponse("could not connect to mongodb",
-                                 status_code=400)
-
+        return func.HttpResponse("could not connect to mongodb", status_code=400)
